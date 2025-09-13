@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: noteapp-backend
+    rootDir: backend
+    env: native
+    buildCommand: "./mvnw clean package -DskipTests"
+    startCommand: "java -jar target/*.jar"
+    envVars:
+      - key: JAVA_VERSION
+        value: 24
