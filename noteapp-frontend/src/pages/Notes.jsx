@@ -110,7 +110,7 @@ export default function Notes() {
             {notes.length === 0 ? (
                 <p className="text-gray-500 italic px-2 text-sm md:text-base"> No notes yet. Start by adding one!</p>
             ) : (
-                <ul className="space-y-4 sm:text-sm text-xs md:text-base overflow-y-scroll h-full " >
+                <ul className="space-y-4 sm:text-sm text-xs md:text-base " >
                     {notes.map((note) => (
                         <li
                             key={note.id}
