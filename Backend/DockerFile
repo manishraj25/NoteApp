@@ -1,0 +1,25 @@
+# Use Eclipse Temurin JDK 24 base image
+FROM eclipse-temurin:24-jdk-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy Maven wrapper and pom.xml first (for caching dependencies)
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+
+# Make mvnw executable
+RUN chmod +x mvnw
+
+# Pre-download dependencies (helps caching)
+RUN ./mvnw dependency:go-offline
+
+# Copy the source code
+COPY src src
+
+# Build the Spring Boot application
+RUN ./mvnw clean package -DskipTests
+
+# Run the JAR file
+CMD ["java", "-jar", "target/*.jar"]
