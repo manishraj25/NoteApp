@@ -1,0 +1,3 @@
+[submodule "noteapp-frontend"]
+	path = noteapp-frontend
+	url = https://github.com/manishraj25/NoteApp-Frontend.git
